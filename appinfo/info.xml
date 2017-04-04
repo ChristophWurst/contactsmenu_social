@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>contactsmenu_social</id>
+	<name>Social Contacts Menu</name>
+	<description>Contacts Menu Social Network Integration </description>
+	<version>0.1</version>
+	<licence>AGPL</licence>
+	<author>Christoph Wurst</author>
+	<category>social</category>
+	<namespace>ContactsMenuSocial</namespace>
+	<website>https://github.com/ChristophWurst/contactsmenu_social#readme</website>
+	<bugs>https://github.com/ChristophWurst/contactsmenu_social/issues</bugs>
+	<repository type="git">https://github.com/ChristophWurst/contactsmenu_social.git</repository>
+	<dependencies>
+		<nextcloud min-version="12" max-version="12" />
+	</dependencies>
+	<contactsmenu>
+		<provider>OCA\ContactsMenuSocial\ContactsMenu\Providers\TwitterProvider</provider>
+	</contactsmenu>
+</info>
