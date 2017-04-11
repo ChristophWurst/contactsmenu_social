@@ -27,6 +27,7 @@ namespace OCA\ContactsMenuSocial\ContactsMenu\Providers;
 use OCP\Contacts\ContactsMenu\IActionFactory;
 use OCP\Contacts\ContactsMenu\IEntry;
 use OCP\Contacts\ContactsMenu\IProvider;
+use OCP\IURLGenerator;
 
 /**
  * @todo move to contacts app
@@ -36,11 +37,16 @@ class TwitterProvider implements IProvider {
 	/** @var IActionFactory */
 	private $actionFactory;
 
+	/** @var IURLGenerator */
+	private $urlGenerator;
+
 	/**
 	 * @param IActionFactory $actionFactory
+	 * @param IURLGenerator $urlGenerator
 	 */
-	public function __construct(IActionFactory $actionFactory) {
+	public function __construct(IActionFactory $actionFactory, IURLGenerator $urlGenerator) {
 		$this->actionFactory = $actionFactory;
+		$this->urlGenerator = $urlGenerator;
 	}
 
 	/**
@@ -53,10 +59,11 @@ class TwitterProvider implements IProvider {
 			return;
 		}
 
+		$iconUrl = $this->urlGenerator->getAbsoluteURL($this->urlGenerator->imagePath('core', 'places/contacts-dark.svg'));
 		// TODO: handle different formats, like @user and full URLs
 		$twitterHandle = $social['TWITTER'];
 		$url = "https://twitter.com/$twitterHandle";
-		$entry->addAction($this->actionFactory->newLinkAction('icon-contacts-dark', 'Twitter profile', $url));
+		$entry->addAction($this->actionFactory->newLinkAction($iconUrl, 'Twitter profile', $url));
 	}
 
 }
